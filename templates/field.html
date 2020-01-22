@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/style.css')}}">
+        <title>University Application</title>
+    </head>
+    <body>
+        <div class='main'>
+            <div class='header'>
+                <h1>University Catalog</h1>
+            </div>
+
+            <div class='userspace'>
+                <div class='logs'><a href="{{url_for('showLogin')}}" style="font-size: 20px">login</a></div>
+            </div>
+            <div class='midbox'> 
+                <div class='leftbox'>
+                    <h2 style="text-align: center">{{school.name}}</h2>
+                    {% for f in fields %}
+                    <p style="text-align: center"><a href="{{url_for('fieldPage',school_id=school.id, field_id=f.id)}}">{{f.name}}</a></p>
+                    {% endfor %}
+                </div>
+                <div class='rightbox'>
+                    <h2 style="text-align: center">{{field.name}}<p style="font-size: 12px">[Added by: {{creator.name}}]</p></h2>
+                    <p style="text-align: center">[<a href="{{url_for('fieldMenuJSON',school_id=school.id, field_id=field.id)}}">JSON</a>]</p>
+                    <h3 style="text-align: center">Data:</h3>
+                    <div style="text-align: center">
+                        <p><b>About this field:</b></br>{{field.description}}</p>
+                        <p><b>Credit hours:</b> {{field.crhours}}</p>
+                        <p><b>Credit hour price:</b> {{field.crprice}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: darkgrey; height: 200px"></div>
+    </body>
+</html>

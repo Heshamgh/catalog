@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/style.css')}}">
+        <title>University Application</title>
+    </head>
+    <body>
+        <div class='main'>
+            <div class='header'>
+                <h1>University Catalog</h1>
+            </div>
+
+            <div class='userspace'>
+                <div class='logs'><a href="{{url_for('showLogin')}}" style="font-size: 20px">login</a></div>
+            </div>
+            <div class='midbox'> 
+                <div class='leftbox'>
+                    <h2 style="text-align: center">Schools</h2>
+                    {% for s in schools %}
+                    <p style="text-align: center"><a href="{{url_for('schoolMenu',school_id=s.id)}}">{{s.name}}</a></p>
+                    {% endfor %}
+                </div>
+                <div class='rightbox'>
+                    <h2 style="text-align: center">{{school.name}}<p style="font-size: 12px">[Added by: {{creator.name}}]</p></h2>
+                    <p style="text-align: center">[<a href="{{url_for('schoolMenuJSON',school_id=school.id)}}">JSON</a>]</p>
+                    <h3 style="text-align: center">Fields:</h3>
+                    {% for f in fields %}
+                        <p style="text-align: center"><a href="{{url_for('fieldPage',school_id=school.id,field_id=f.id)}}">{{f.name}}</a></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div style="background-color: darkgrey; height: 200px"></div>
+    </body>
+</html>

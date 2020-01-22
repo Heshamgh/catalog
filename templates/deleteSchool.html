@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/style.css')}}">
+        <title>University Application</title>
+    </head>
+    <body>
+        <div class='main'>
+            <div class='header'>
+                <h1>University Catalog</h1>
+            </div>
+
+            <div class='userspace'>
+                <div style="flex-wrap: wrap; display: flex">
+                    <h style="font-size: 20px">Welcome {{username}} &nbsp&nbsp</h>
+                    <div><img src="{{userpic}}" style="width: 30px; height: 30px;">&nbsp&nbsp</div>
+                    <div>
+                    <a href="{{url_for('gdisconnect')}}" style="font-size: 20px">logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class='midbox'> 
+                <div class='leftbox'>
+                </div>
+                <div class='rightbox' style="text-align: center">
+                    <h3>Are you sure you want to delete {{school.name}}?</h3>
+                    <form action="{{url_for('schoolDelete', school_id=school_id)}}" method = 'POST'>
+                        <input type='submit' value='Delete'> 
+                        <a href= "{{url_for('main')}}">Cancel</a> 
+                    </form>
+                    
+                </div>   
+            </div>
+        </div>
+        <div style="background-color: darkgrey; height: 200px"></div>
+    </body>
+</html>

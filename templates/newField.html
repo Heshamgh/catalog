@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/style.css')}}">
+        <title>University Application</title>
+    </head>
+    <body>
+        <div class='main'>
+            <div class='header'>
+                <h1>University Catalog</h1>
+            </div>
+
+            <div class='userspace'>
+                <div style="flex-wrap: wrap; display: flex">
+                    <h style="font-size: 20px">Welcome {{username}} &nbsp&nbsp</h>
+                    <div><img src="{{userpic}}" style="width: 30px; height: 30px;">&nbsp&nbsp</div>
+                    <div>
+                    <a href="{{url_for('gdisconnect')}}" style="font-size: 20px">logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class='midbox'> 
+                <div class='leftbox'>
+                   <h4 style="text-align: center">Add new field</br>to</br> {{school.name}}</h4>
+                </div>
+                <div class='rightbox'>
+                    <form action="{{url_for('fieldAdd', school_id = school_id )}}" method = 'POST' style="text-align: center">
+                        <p>Name:</p>
+                        <input type='text' size='30' name='name'>
+                        <p>Description:</p>
+                        <textarea name="description" rows="10" cols="30"></textarea>
+                        <p>Credit hours:</p>
+                        <input type='number' size='30' name='crhours'>         
+                        <p>Credit hour price:</p>
+                        <input type='text' size='30' name='crprice'>
+                        </br></br>
+                        <input type='submit' value='Create'>
+                    </form>
+                </div>   
+            </div>
+        </div>
+        <div style="background-color: darkgrey; height: 200px"></div>
+    </body>
+</html>
+
+                

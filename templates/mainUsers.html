@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/style.css')}}">
+        <title>University Application</title>
+    </head>
+    <body>
+        <div class='main'>
+            <div class='header'>
+                <h1>University Catalog</h1>
+            </div>
+
+            <div class='userspace'>
+                <div style="flex-wrap: wrap; display: flex">
+                    <h style="font-size: 20px">Welcome {{username}} &nbsp&nbsp</h>
+                    <div><img src="{{userpic}}" style="width: 30px; height: 30px;">&nbsp&nbsp</div>
+                    <div>
+                    <a href="{{url_for('gdisconnect')}}" style="font-size: 20px">logout</a>
+                    </div>
+                </div>
+            </div>
+            <div class='midbox'> 
+                <div class='leftbox'>
+                    <p style="text-align: center"><a href="{{url_for('schoolAdd')}}">Add new school</a></p>
+                    <h2 style="text-align: center">Schools</h2>
+                    {% for s in schools %}
+                    <p style="text-align: center"><a href="{{url_for('schoolMenu',school_id=s.id)}}">{{s.name}}</a></p>
+                    {% endfor %}
+                </div>
+                <div class='rightbox'>
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <div style="background-color: red; height: 30px; width: 100%; text-align: center">
+                                {% for message in messages %}
+                                    <h3>{{message}}</h3>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                    <h2 style="text-align: center">Recently added Fields</h2>
+                    {% for f in fields %}
+                        {% for s in schools %}
+                        {% if s.id == f.school_id %}
+                        <p style="text-align: center; font-size: 12px; color: grey"><a href="{{url_for('fieldPage', school_id=f.school_id,field_id=f.id)}}" style="font-size: 15px">{{f.name}}</a> [{{s.name}}]</p>
+                        {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div style="background-color: darkgrey; height: 200px"></div>
+    </body>
+</html>

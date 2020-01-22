@@ -1,0 +1,60 @@
+.main {
+    background-color: darkgrey;
+    display: flex;
+    flex-wrap: wrap;
+    height: 600px;
+}
+
+.header {
+    background-color: greenyellow;
+    height: 60px;
+    width: 100%;
+    text-align: center;
+}
+
+.userspace {
+    background-color: gray;
+    height: 30px; 
+    width: 60%; 
+    border: 2px solid darkgrey; 
+    margin: auto; 
+    padding: 5px;
+}
+
+.logs {
+    float: right; 
+    height: 30px; 
+    background-color: white; 
+    width: 60px; 
+    text-align: center
+}
+
+.midbox {
+    background-color: white ;
+    height: 500px; 
+    width: 60%; 
+    border: 2px solid grey;
+    display: flex;
+    flex-wrap: wrap; 
+    margin: auto;
+}
+
+.leftbox {
+    height: 500px; 
+    width: 20%; 
+    border: 1px solid grey;
+}
+
+.rightbox{
+    height: 500px;
+    width: 78%
+}
+
+
+a:link {
+  color: green;
+}
+
+a:visited {
+  color: green;
+}
